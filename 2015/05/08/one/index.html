@@ -154,7 +154,7 @@
 <p>假设$x_0 = 1$，因此可以以矩阵形式改写为：</p>
 <p>$$Y = \Theta^T X$$</p>
 <p>这个问题的损失函数可表述为：<br>$$J(\theta) = \sum_{i=0}^n(\theta_i x_i - y_i)^2$$</p>
-<p>而线性回归问题可以转化成求解损失函数最小的问题。即：<br>$$\min<em>{\rm \theta} J(\theta)<br> = \min</em>{\rm \theta}<br>\sum_{i=0}^n(\theta_i x_i - y_i)^2$$</p>
+<p>而线性回归问题可以转化成求解损失函数最小的问题。即：<br>$$\min_{\rm \theta} J(\theta)<br> = \min_{\rm \theta}<br>\sum_{i=0}^n(\theta_i x_i - y_i)^2$$</p>
 <p>一般的解法是梯度下降法，通过不断的修正$\theta$来降低损失函数（$J(\theta)$）至最小。</p>
 <p>梯度下降的原理就是$J(\theta)$对$\theta$进行求导，得到当前的梯度，然后修正$\theta$。<br>$$\Theta = \Theta - \gamma \frac{dJ}{d\theta}$$</p>
 <h2 id="调参">调参</h2><p>梯度下降对$\theta$的初始值敏感，很多人初始值设为零向量。</p>
