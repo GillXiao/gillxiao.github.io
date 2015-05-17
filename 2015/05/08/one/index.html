@@ -20,7 +20,7 @@
 
 	<meta name="keywords" content="ml," />
 
-  <title> Linear regression one // Gill Xiao </title>
+  <title> Linear Regression one // Gill Xiao </title>
 </head>
 
 <body>
@@ -102,7 +102,7 @@
           
           
             
-              Linear regression one
+              Linear Regression one
             
           
         </h1>
@@ -150,7 +150,7 @@
         
 
         
-          <h1 id="linear_regression_one">linear regression one</h1><h2 id="问题">问题</h2><p>考虑一个线性回归问题：<br>$$y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 $$</p>
+          <h2 id="问题">问题</h2><p>考虑一个线性回归问题：<br>$$y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 $$</p>
 <p>假设$x_0 = 1$，因此可以以矩阵形式改写为：</p>
 <p>$$Y = \Theta^T X$$</p>
 <p>这个问题的损失函数可表述为：<br>$$J(\theta) = \sum_{i=0}^n(\theta_i x_i - y_i)^2$$</p>
@@ -160,7 +160,15 @@
 <p>梯度下降的原理就是$J(\theta)$对$\theta$进行求导，得到当前的梯度，也就是下降最快的斜率，然后修正$\theta$。<br>$$\Theta = \Theta - \gamma \frac{dJ}{d\theta}$$</p>
 <h4 id="随机梯度下降法">随机梯度下降法</h4><p>批量梯度下降法每次计算时计算所有样本，计算压力较大，因此就有随机梯度下降法。</p>
 <p>在求导时，只随机选取一个样本进行计算，然后迭代。</p>
-<h3 id="牛顿法">牛顿法</h3><h4 id="牛顿法-1">牛顿法</h4><p>在求解$f(x)=0$时，首先选取接近这个解的点$x_1$，然后求导$f^{\prime}(x_1)$，导数的线与x轴相交于$x_2$，然后对点$(x_2,f(x_2)$求导，依次迭代，逐渐逼近最终解。</p>
+<h4 id="局部梯度下降法">局部梯度下降法</h4><p>有时候问题并不是线性的，如果使用线性回归并不能很好的拟合，使用2次或者更高次的模型，可能造成overfitting。</p>
+<p>如果数据量足够的话，可以在构建损失函数的时候，考虑需要预测的点附近的样本，增加他们的权重，将样本局部放大后有可能是线性的。</p>
+<p>损失函数可以为：</p>
+<p>$$J(\theta) = \sum_{i=0}^nw_i(\theta_i x_i -y_i)^2$$</p>
+<p>相比普通的线性回归为题，增加的局部加权参数为：$w_i = exp(-\frac{(x-x_i)^2}{2\Gamma^2})$</p>
+<p>这个参数取值范围为0到1，离所求的点近的点更加接近于1，公式很像正态分布的公式，但是没有任何关系，不过图形是类似的，离得越远，下降的越剧烈，这个是由参数$\Gamma$所决定的。</p>
+<p>这个算法的好处是不需要线性也能解，前提是有足够的数据量。</p>
+<h3 id="牛顿法">牛顿法</h3><h4 id="牛顿法-1">牛顿法</h4><p>牛顿法在逻辑回归里用的比较多，顺便介绍一下这个方法。</p>
+<p>在求解$f(x)=0$时，首先选取接近这个解的点$x_1$，然后求导$f^{\prime}(x_1)$，导数的线与x轴相交于$x_2$，然后对点$(x_2,f(x_2)$求导，依次迭代，逐渐逼近最终解。</p>
 <p>$$x = x - \frac{f(x)}{f^{\prime}(x)}$$</p>
 <p>牛顿法应用到回归问题，我们可以将求损失函数最小转化为求解损失函数的一阶导为0的解。<br>即$J^{\prime}(\theta) = 0$</p>
 <p>迭代公式为：</p>
@@ -310,7 +318,7 @@
         <div class="post-toc">
           
           
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linear_regression_one"><span class="nav-number">1.</span> <span class="nav-text">linear regression one</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法"><span class="nav-number">1.2.</span> <span class="nav-text">解法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降法"><span class="nav-number">1.2.1.</span> <span class="nav-text">梯度下降法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#批量梯度下降法"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">批量梯度下降法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机梯度下降法"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">随机梯度下降法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#牛顿法"><span class="nav-number">1.2.2.</span> <span class="nav-text">牛顿法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#牛顿法-1"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">牛顿法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拟牛顿法"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">拟牛顿法</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降法"><span class="nav-number">2.1.</span> <span class="nav-text">梯度下降法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#批量梯度下降法"><span class="nav-number">2.1.1.</span> <span class="nav-text">批量梯度下降法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机梯度下降法"><span class="nav-number">2.1.2.</span> <span class="nav-text">随机梯度下降法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局部梯度下降法"><span class="nav-number">2.1.3.</span> <span class="nav-text">局部梯度下降法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#牛顿法"><span class="nav-number">2.2.</span> <span class="nav-text">牛顿法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#牛顿法-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">牛顿法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拟牛顿法"><span class="nav-number">2.2.2.</span> <span class="nav-text">拟牛顿法</span></a></li></ol></li></ol></li></ol></div>
           
         </div>
         <div class="post-toc-indicator-bottom post-toc-indicator"></div>
