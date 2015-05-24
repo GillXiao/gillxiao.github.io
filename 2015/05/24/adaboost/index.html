@@ -154,7 +154,7 @@
 <p>ensemble主要分为bagging和boosting，前者分类器权重相同，后者分类器权重不同。前者的代表是random forest，后者是Adaboost。</p>
 <h2 id="原理">原理</h2><p>Adaboost的原理非常简单，每次迭代都根据分类器的正确率来确定分类器的权重，通过分类器的权重，重新计算样本的权重，达到迭代次数上限或者精度无法再变化就停止迭代。</p>
 <h2 id="计算">计算</h2><p>对于第t次迭代：</p>
-<p>1、确定分类器的分类错误率$\epsilon$ = 错误分类样本数$\ast D_{t-1}$/总样本数$\ast D_{t-1}$，从而可以确定分类器权重：<br>$$\alpha = \frac{1}{2} \ln(\frac{1-\epsilon}{\epsilon})$$</p>
+<p>1、确定分类器的分类错误率$\epsilon$ = 错误分类样本$\ast D_{t-1}$/所有样本$\ast D_{t-1}$，从而可以确定分类器权重：<br>$$\alpha = \frac{1}{2} \ln(\frac{1-\epsilon}{\epsilon})$$</p>
 <p>2、根据分类器权重，确定样本权重，加入有m个样本，初始样本权重为：$D_i = \frac{1}{m}$，迭代的权重为：$$D_t(i) = \frac{D_t(i) * E_t(i)}{Z_t}$$<br>$E_t(i)$的值，当样本在分类器上分类正确时，等于$e^{-\alpha_t}$，分类错误时等于$e^{\alpha_t}$, $Z_t$只为标准化$D_t$.</p>
 <h2 id="优劣">优劣</h2><h3 id="优势">优势</h3><ul>
 <li>不用调参（除了迭代次数）</li>
@@ -168,7 +168,7 @@
 <li>对于均匀噪声（uniform noise）比较脆弱。</li>
 </ul>
 <h2 id="代码">代码</h2><p>python代码为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">adaboost</span><span class="params">()</span>:</span></span><br><span class="line">	test</span><br><span class="line">	<span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">adaboost</span><span class="params">()</span>:</span></span><br><span class="line">	to be done</span><br><span class="line">	<span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
 <p>refer to：<a href="http://math.mit.edu/~rothvoss/18.304.3PM/Presentations/1-Eric-Boosting304FinalRpdf.pdf" target="_blank" rel="external">Boosting finalRpdf</a></p>
 
         
